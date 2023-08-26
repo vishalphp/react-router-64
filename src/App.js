@@ -1,6 +1,7 @@
 import { createBrowserRouter, RouterProvider, createRoutesFromElements, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Product from './pages/Product';
+import RootLayout from './Layout/RootLayout';
 
 /*
 const elemenRouters = createRoutesFromElements(
@@ -11,9 +12,15 @@ const elemenRouters = createRoutesFromElements(
 );
 const router = createBrowserRouter(elemenRouters);*/
 
-const router = createBrowserRouter([
-    {path: '/', element: <Home />},
-    {path: '/products', element: <Product />}
+const router = createBrowserRouter([ 
+    {
+      path : "/",
+      element: <RootLayout />,
+      children: [
+         {path: '/', element: <Home />},
+         {path: '/products', element: <Product />}
+      ]
+    }
 ]);
 
 function App() {
